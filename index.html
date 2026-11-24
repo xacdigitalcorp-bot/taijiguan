@@ -6,15 +6,15 @@
   <title>太濟觀｜太初有道，濟世渡厄</title>
   <meta name="description" content="太濟觀清修道場。澄心守常，濟世安人。循一縷山風，點一盞明燈，於紛擾中尋回清寧。">
   <meta property="og:title" content="太濟觀｜太初有道，濟世渡厄"><meta property="og:description" content="山中一方靜土，塵世一盞明燈。祈福點燈、太初靈籤與除厄公告。"><meta property="og:type" content="website">
-  <link rel="icon" type="image/svg+xml" href="seal.svg"><link rel="stylesheet" href="styles.css?v=8b07630ef51e">
-  <script type="module" src="app.js"></script>
+  <link rel="icon" type="image/svg+xml" href="seal.svg"><link rel="stylesheet" href="styles.css?v=20261124-r1">
+  <script type="module" src="app.js?v=20261124-r1"></script>
 </head>
 <body>
 <a class="skip" href="#main">跳至主要內容</a>
 <header class="site-header">
   <a class="brand" href="#" aria-label="太濟觀首頁"><span class="brand-seal" aria-hidden="true">太<br>濟</span><span><strong>太濟觀</strong><small>TAI JI GUAN</small></span></a>
   <button class="menu-button" aria-expanded="false" aria-controls="navigation">選單 <span aria-hidden="true">☰</span></button>
-  <nav id="navigation" aria-label="主要選單"><a href="#about">太濟緣起</a><a href="#practice">祈福修持</a><a href="#notices">除厄公告</a><a href="#mentor">觀中人物</a><a href="#journal">山中紀事</a><a href="#visit">參訪須知</a></nav>
+  <nav id="navigation" aria-label="主要選單"><a href="#about">太濟緣起</a><a href="#practice">祈福修持</a><a href="#notices">除厄公告</a><details class="people-nav"><summary>觀中人物</summary><div class="people-links"><a href="#mentor">玄微道長</a><a href="#senior">祈丘山・巡界人</a><a href="#traveler">程野・入觀子弟</a></div></details><a href="#journal">山中紀事</a><a href="#visit">參訪須知</a></nav>
   <button class="header-ritual" data-open="lamp">祈福點燈 <span aria-hidden="true">✧</span></button>
 </header>
 <main id="main">
@@ -83,7 +83,7 @@
         <h2 id="senior-heading">祈丘山<span class="traveler-name-divider">・</span><span>巡界人</span></h2>
         <p class="traveler-lead">巡察四方，守正安人</p>
         <p>於太濟觀修持，擔巡界之責。</p>
-        <p>行事以守正為先，巡察以安人為本。將修持落於日常，守護所行之處的一份安寧。</p>
+        <p>行事以守正為先，巡察以安人為本。將修持落於日常，守護所行之處的一份安寧。</p><p class="person-record"><a class="text-link" href="#article/qi-record" data-article="qi-record">巡界札記｜先陪人走出來</a></p>
       </div>
     </div>
   </section>
@@ -100,7 +100,7 @@
         <h2 id="traveler-heading">程野<span class="traveler-name-divider">・</span><span>入觀子弟</span></h2>
         <p class="traveler-lead">道在山中，也在人間</p>
         <p>程野，太濟觀入觀子弟。循鄉里之聲，訪人間之事，於山門之外踐行「濟世安人」之心。</p>
-        <p>平日看似漫不經心，遇到險境卻格外沉著。不擅說好聽的話，卻總在有人需要時走上前去，陪人渡過眼前的難關。</p>
+        <p>平日看似漫不經心，遇到險境卻格外沉著。不擅說好聽的話，卻總在有人需要時走上前去，陪人渡過眼前的難關。</p><p class="person-record"><a class="text-link" href="#article/cheng-record" data-article="cheng-record">訪查手記｜畫面之外的聲音</a></p>
         <div class="traveler-follow"><a class="button primary" href="https://www.facebook.com/profile.php?id=61594107989457" target="_blank" rel="noopener noreferrer" aria-label="追蹤程野的行跡（Facebook，另開分頁）">追蹤程野的行跡 <span aria-hidden="true">↗</span></a><span class="traveler-link-note">程野 Facebook 粉專 · 另開分頁</span></div>
       </div>
     </div>
@@ -115,7 +115,7 @@
 <dialog id="lamp-dialog" aria-labelledby="lamp-heading" class="ritual-dialog"><button class="dialog-close" aria-label="關閉點燈視窗">×</button><div class="dialog-head"><span class="eyebrow">一 燈 一 願</span><h2 id="lamp-heading">太初明燈</h2><p>安住當下，為心中牽掛點一盞燈。</p></div><form id="lamp-form"><label for="prayer-name">稱呼或暱稱 <span>必填</span></label><input id="prayer-name" name="name" maxlength="24" placeholder="該如何稱呼您？" autocomplete="off" required><fieldset><legend>所願之事</legend><div class="wish-options"><label><input type="radio" name="wish" value="平安順遂" checked><span>平安順遂</span></label><label><input type="radio" name="wish" value="身心清寧"><span>身心清寧</span></label><label><input type="radio" name="wish" value="家人安好"><span>家人安好</span></label><label><input type="radio" name="wish" value="前路澄明"><span>前路澄明</span></label></div></fieldset><label for="prayer-message">留一句心願 <span>選填</span></label><textarea id="prayer-message" name="message" rows="2" maxlength="80" placeholder="也可將心願留在心裡。"></textarea><p class="form-note">僅在此頁呈現，不會上傳或公開。無須付費。</p><button class="button primary wide" type="submit">誠心點燈 ✧</button><p id="lamp-error" class="form-error" role="alert"></p></form><section id="lamp-result" hidden aria-live="polite"><div class="result-lamp lamp-art" aria-hidden="true"><div class="halo"></div><div class="flame"></div><div class="wick"></div><div class="bowl"></div><div class="stem"></div><div class="base"></div></div><p class="result-kicker">燈 火 已 燃</p><h3 id="blessing-name"></h3><p id="blessing-wish"></p><p id="blessing-message"></p><p class="blessing-copy">願此微光伴君安度歲月，<br>心神澄明，諸事平順。</p><button class="button primary" id="save-card">保存祈福卡</button><button class="button quiet" id="relight">再為一人點燈</button><p class="form-note">祈福卡會下載至您的裝置。</p></section></dialog>
 
 <dialog id="fortune-dialog" aria-labelledby="fortune-heading" class="ritual-dialog"><button class="dialog-close" aria-label="關閉求籤視窗">×</button><div class="dialog-head"><span class="eyebrow">靜 心 問 道</span><h2 id="fortune-heading">太初靈籤</h2><p>請沉澱思緒，於心中默想一事。</p></div><div id="fortune-start"><div class="fortune-art dialog-fortune" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><div class="fortune-cup"><span>太<br>初</span></div></div><label for="fortune-topic">今日所問</label><select id="fortune-topic"><option value="心境">心境與方向</option><option value="人際">人際與相處</option><option value="學業">學業與工作</option><option value="家人">家人與生活</option></select><button id="draw-fortune" class="button primary wide">靜心抽籤</button><p id="draw-status" class="form-note" aria-live="polite">心念平穩後，再輕觸籤筒。</p></div><section id="fortune-result" hidden aria-live="polite"><span id="fortune-number" class="fortune-number"></span><h3 id="fortune-title"></h3><p id="fortune-poem" class="poem"></p><p class="result-caption">籤已得，請靜心閱覽。</p><details class="fortune-explanation"><summary>查看籤解</summary><p id="fortune-reading"></p><p id="fortune-topic-reading"></p></details><p class="form-note">籤文旨在提點心境，順逆皆緣，唯願從容以對。</p><button class="button quiet" id="redraw">再靜心片刻</button></section></dialog>
-<dialog id="article-dialog" class="article-dialog" aria-labelledby="article-heading"><button class="dialog-close" aria-label="關閉文章">×</button><p id="article-meta" class="eyebrow"></p><h2 id="article-heading"></h2><div id="article-body" class="article-body"></div><div class="article-footer"><span class="small-seal" aria-hidden="true">太<br>濟</span><span>太濟觀 · 知客堂</span><button class="text-link close-article">閱畢，返回</button></div></dialog>
+<dialog id="article-dialog" class="article-dialog" aria-labelledby="article-heading"><div class="article-toolbar"><button class="dialog-close" aria-label="關閉文章">×</button></div><div class="article-scroll" tabindex="0" aria-label="文章內容"><p id="article-meta" class="eyebrow"></p><h2 id="article-heading"></h2><div id="article-body" class="article-body"></div><div class="article-footer"><span class="small-seal" aria-hidden="true">太<br>濟</span><span>太濟觀 · 知客堂</span><button class="text-link close-article">閱畢，返回</button></div></div></dialog>
 <noscript><style>.noscript{position:static}.menu-button{display:none}</style><div class="noscript">點燈與抽籤需要啟用 JavaScript。<a href="archive.html">前往公告與紀事全文</a> · <a href="#about">太濟緣起</a> · <a href="#visit">參訪須知</a></div></noscript>
 </body></html>
 

@@ -26,3 +26,20 @@ input::placeholder,textarea::placeholder{color:#66715e}
 
 
 .mentor{margin-bottom:0}.mentor-portrait{aspect-ratio:652/880;overflow:hidden;border:1px solid #cdd2c3;background:#303d35}.mentor-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 35%}.traveler-copy .mentor-status{display:inline-block;font-size:15px!important;letter-spacing:.18em;border:1px solid #aeb7a4;padding:3px 14px;color:#5d6857;margin-bottom:24px}.mentor+.traveler{border-top:0}
+
+/* Article chrome stays in place while the article itself scrolls. */
+.article-dialog{padding:0;overflow:hidden;max-height:90svh}
+.article-toolbar{display:flex;justify-content:flex-end;padding:7px 12px;border-bottom:1px solid var(--line);background:var(--paper)}
+.article-toolbar .dialog-close{position:static;min-width:44px;min-height:44px}
+.article-scroll{padding:20px 58px 35px;max-height:calc(90svh - 60px);overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;overflow-wrap:anywhere}
+.article-scroll:focus-visible{outline:2px solid var(--red);outline-offset:-3px}
+.people-nav{position:relative}
+.people-nav summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}
+.people-nav summary::-webkit-details-marker{display:none}
+.people-nav summary:after{content:'⌄';font-size:.85em}
+.people-links{position:absolute;top:calc(100% + 16px);left:-18px;min-width:220px;display:flex;flex-direction:column;gap:0!important;padding:10px 18px;background:var(--paper);border:1px solid var(--line);box-shadow:0 12px 25px #25352218;z-index:20}
+.people-links a{display:block;padding:10px 0;white-space:nowrap}
+.person-record{margin:20px 0}
+.person-record .text-link{font-size:17px;letter-spacing:.04em}
+@media(max-width:1050px){.people-nav{width:100%}.people-nav summary{font-size:19px;padding:12px 0;border-bottom:1px solid #e8eadf}.people-links{position:static;border:0;box-shadow:none;padding:0 0 8px 18px}.people-links a{font-size:17px!important}}
+@media(max-width:600px){.article-dialog{padding:0;max-height:92svh}.article-scroll{padding:15px 24px 28px;max-height:calc(92svh - 60px)}.person-record .text-link{font-size:16px}}

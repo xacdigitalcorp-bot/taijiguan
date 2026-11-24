@@ -1,9 +1,11 @@
-import {fortunes,selectFortune,topicReadings,articles,normalizeName,escapeXml} from './data.js';
+import {fortunes,selectFortune,topicReadings,articles,normalizeName,escapeXml} from './data.js?v=20261124-r1';
+import {articleFromHash,articleHash} from './routing.mjs';
 const $=s=>document.querySelector(s);
 const menu=$('.menu-button'),nav=$('#navigation');
 menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open);});
-nav.addEventListener('click',e=>{if(e.target.closest('a')){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');}});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');}});
+nav.addEventListener('click',e=>{if(e.target.closest('a')){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');const people=nav.querySelector('details');if(people)people.open=false;}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');const people=nav.querySelector('details');if(people)people.open=false;}});
+document.addEventListener('click',e=>{const people=nav.querySelector('details');if(people&&!people.contains(e.target))people.open=false;});
 for(const dialog of document.querySelectorAll('dialog')){
  dialog.querySelector('.dialog-close').addEventListener('click',()=>dialog.close());
  dialog.addEventListener('click',e=>{if(e.target!==dialog)return;const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();});
@@ -12,17 +14,31 @@ document.addEventListener('click',e=>{
  const ritual=e.target.closest('[data-open]');
  if(ritual){$('#'+ritual.dataset.open+'-dialog').showModal();return;}
  const article=e.target.closest('[data-article]');
- if(article)openArticle(article.dataset.article);
+ if(article){e.preventDefault();openArticle(article.dataset.article);}
 });
-function openArticle(id){
+function openArticle(id,{navigate=true}={}){
  const article=articles[id];if(!article)return;
+ if(navigate){const hash=articleHash(id,articles);if(hash&&location.hash!==hash)history.pushState(null,'',hash);}
  $('#article-meta').textContent=article.meta;$('#article-heading').textContent=article.title;
  // Only hard-coded editorial content is inserted here. Visitor input uses textContent below.
  $('#article-body').innerHTML=article.body;
- const dialog=$('#article-dialog');if(!dialog.open)dialog.showModal();dialog.scrollTop=0;
+ const dialog=$('#article-dialog');if(!dialog.open)dialog.showModal();dialog.querySelector('.article-scroll').scrollTop=0;
  dialog.querySelector('.dialog-close').focus({preventScroll:true});
 }
 $('.close-article').addEventListener('click',()=>$('#article-dialog').close());
+let applyingArticleRoute=false;
+function syncArticleRoute(){
+ const id=articleFromHash(location.hash,articles),dialog=$('#article-dialog');
+ applyingArticleRoute=true;
+ try{if(id)openArticle(id,{navigate:false});else if(dialog.open)dialog.close();}
+ finally{applyingArticleRoute=false;}
+}
+$('#article-dialog').addEventListener('close',()=>{
+ if(!applyingArticleRoute&&articleFromHash(location.hash,articles))history.replaceState(null,'',location.pathname+location.search+'#notices');
+});
+window.addEventListener('hashchange',syncArticleRoute);
+window.addEventListener('popstate',syncArticleRoute);
+syncArticleRoute();
 for(const button of document.querySelectorAll('[data-filter]'))button.addEventListener('click',()=>{
  for(const other of document.querySelectorAll('[data-filter]'))other.setAttribute('aria-pressed',String(other===button));
  for(const row of document.querySelectorAll('[data-kind]'))row.hidden=button.dataset.filter!=='all'&&row.dataset.kind!==button.dataset.filter;
